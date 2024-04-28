@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:origami/bussinus_logic/authentication_cubit.dart';
+import 'package:origami/bussinus_logic/authentication.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
               // BlocProvider.of<AuthenticationCubit>(context)
               //     .setLoginStatus(false);
 
-              logout();
+              logout(context: context);
             },
             child: Text("logout")),
       ),

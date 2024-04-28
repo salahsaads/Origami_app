@@ -11,13 +11,16 @@ class CustomTextField extends StatelessWidget {
     required this.icon,
     required this.obscure,
     this.controller,
+    this.keyboardType,
+    this.maxLength,
   });
   final String label;
   final String hint;
   final IconData icon;
   final bool obscure;
   final TextEditingController? controller;
-
+  final TextInputType? keyboardType;
+  final int? maxLength;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,6 +43,8 @@ class CustomTextField extends StatelessWidget {
           },
           controller: controller,
           cursorColor: primarycolor,
+          keyboardType: keyboardType,
+          maxLength: maxLength,
           textDirection: TextDirection.rtl,
           decoration: InputDecoration(
               filled: true,

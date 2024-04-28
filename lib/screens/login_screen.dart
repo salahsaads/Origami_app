@@ -9,7 +9,7 @@ import 'package:origami/screens/register_screen.dart';
 
 import '../Theme/colors.dart';
 
-import '../bussinus_logic/authentication_cubit.dart';
+import '../bussinus_logic/authentication.dart';
 import '../widgets/custom_appbar.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_textfield.dart';
@@ -52,10 +52,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       CustomTextField(
                         label: 'رقم الهاتف',
-                        hint: 'Example@gmail.com',
+                        hint: 'ادخل رقم هاتفك',
                         icon: Icons.phone,
                         controller: _phoneNumberController,
                         obscure: false,
+                        keyboardType: TextInputType.number,
+                        maxLength: 11,
                       ),
                       SizedBox(
                         height: 10.h,

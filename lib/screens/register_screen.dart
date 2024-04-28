@@ -27,11 +27,11 @@ class RegisterBody extends StatelessWidget {
         children: [
           const CustomAppbar(text: 'إنشاء حساب جديد'),
           SizedBox(
-            height: 5.h,
+            height: 10.h,
           ),
           Image.asset(
             'assets/images/logo.png',
-            width: 90.w,
+            width: 100.w,
           ),
           RegisterForm()
         ],

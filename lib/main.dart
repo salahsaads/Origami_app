@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:origami/bussinus_logic/authentication_cubit.dart';
+import 'package:origami/bussinus_logic/authentication.dart';
 import 'package:origami/screens/home_screen.dart';
 
 import 'package:origami/screens/login_screen.dart';
@@ -31,13 +31,7 @@ class Origami extends StatelessWidget {
       splitScreenMode: true,
       minTextAdapt: true,
       designSize: const Size(360, 690),
-      child:
-          // BlocProvider(
-          //   create: (context) => AuthenticationCubit(),
-          //   child:
-
-          CustomMaterialApp(),
-      // ),
+      child: CustomMaterialApp(),
     );
   }
 }
@@ -50,6 +44,7 @@ class CustomMaterialApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(),
         home: SplashScreen(
           nextScreen: FutureBuilder<bool>(
@@ -69,27 +64,12 @@ class CustomMaterialApp extends StatelessWidget {
                         : const LoginScreen();
                   }
                 }
-              }
-              // BlocBuilder<AuthenticationCubit, AuthenticationState>(
-              //     builder: (context, state) {
-              //   if (state is AuthenticationState) {
-              //     return const HomeScreen();
-              //   } else {
-              //     return const LoginScreen();
-              //   }
-              // }),
-              ),
+              }),
           routes: {
             'loginpage': (context) => const LoginScreen(),
             'registerpage': (context) => const RegisterScreen(),
             'homepage': (context) => const HomeScreen(),
           },
         ));
-  }
-
-  Future<bool> checkLoginStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool('isLoggedIn') ??
-        false; // Default to false if value is not found
   }
 }

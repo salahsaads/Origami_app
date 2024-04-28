@@ -1,23 +1,13 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:bloc/bloc.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:origami/screens/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/home_screen.dart';
-
-// Authentication state
-// class AuthenticationState {
-//   final bool isLoggedIn;
-
-//   AuthenticationState(this.isLoggedIn);
-// }
-
-// // Authentication Cubit
-// class AuthenticationCubit extends Cubit<AuthenticationState> {
-//   AuthenticationCubit() : super(AuthenticationState(false));
 
 check() {}
 // Method to log in
@@ -80,8 +70,14 @@ Future<void> login({
   }
 }
 
-logout() {
+logout({required BuildContext context}) {
   setLoginStatus(false);
+  Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoginScreen(),
+      ),
+      (route) => false);
 }
 
 // Function to store login status locally
@@ -90,4 +86,11 @@ Future<void> setLoginStatus(bool isLoggedIn) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setBool('isLoggedIn', isLoggedIn);
 }
+
 // }
+Future<bool> checkLoginStatus() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool loginstate = prefs.getBool('isLoggedIn') ??
+      false; // Default to false if value is not found
+  return loginstate;
+}
