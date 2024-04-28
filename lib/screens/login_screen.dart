@@ -1,5 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +15,7 @@ import '../bussinus_logic/authentication.dart';
 import '../widgets/custom_appbar.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_textfield.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -77,12 +80,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (formstate.currentState!.validate()) {
                             isloading = true;
                             setState(() {});
-
-                            // await BlocProvider.of<AuthenticationCubit>(context)
                             login(
-                                phone: _phoneNumberController,
-                                pass: _passwordController,
-                                context: context);
+                              phone: _phoneNumberController,
+                              pass: _passwordController,
+                              context: context,
+                            );
                             isloading = false;
                             setState(() {});
                           }

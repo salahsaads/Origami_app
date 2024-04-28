@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:origami/bussinus_logic/authentication.dart';
 import 'package:origami/screens/login_screen.dart';
 
 import '../Theme/colors.dart';
@@ -79,11 +80,8 @@ class _RegisterFormState extends State<RegisterForm> {
                 if (form.currentState!.validate()) {
                   isloading = true;
                   setState(() {});
-                  await users.add({
-                    'name': name.text.trim(),
-                    'phoneNumber': phone.text.trim(),
-                    'password': pass.text.trim(),
-                  });
+                  register(
+                      name: name, phone: phone, pass: pass, context: context);
                   isloading = false;
                   setState(() {});
                 }
