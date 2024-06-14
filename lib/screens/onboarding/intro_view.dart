@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../Theme/colors.dart';
+import '../../Theme/constant.dart';
 
 class Intro extends StatelessWidget {
   const Intro({
@@ -28,7 +28,7 @@ class Intro extends StatelessWidget {
                   width: MediaQuery.sizeOf(context).width,
                   height: MediaQuery.sizeOf(context).height / 2,
                   decoration: const BoxDecoration(
-                      color: secondarycolor,
+                      color: kSecondarycolor,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.elliptical(200, 70),
                         bottomRight: Radius.elliptical(200, 70),
@@ -86,13 +86,13 @@ class Intro extends StatelessWidget {
                   width: 50.w,
                   height: 50.h,
                   decoration: const BoxDecoration(
-                    color: primarycolor,
+                    color: kPrimarycolor,
                     shape: BoxShape.circle,
                   ),
                   child: const Center(
                     child: Icon(
                       Icons.arrow_back,
-                      color: secondarycolor,
+                      color: kSecondarycolor,
                     ),
                   ),
                 ),

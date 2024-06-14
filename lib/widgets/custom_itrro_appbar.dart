@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../Theme/colors.dart';
+import '../Theme/constant.dart';
 
-class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({
+class CustomIntoAppbar extends StatelessWidget {
+  const CustomIntoAppbar({
     super.key,
     required this.text,
   });
@@ -15,7 +15,7 @@ class CustomAppbar extends StatelessWidget {
       height: 110.h,
       width: MediaQuery.sizeOf(context).width,
       decoration: const BoxDecoration(
-        color: primarycolor,
+        color: kPrimarycolor,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.elliptical(300, 20),
           bottomRight: Radius.elliptical(300, 20),
@@ -30,7 +30,7 @@ class CustomAppbar extends StatelessWidget {
             text!,
             style: TextStyle(
                 fontSize: 28.sp,
-                color: secondarycolor,
+                color: kSecondarycolor,
                 fontFamily: 'NotoKufiArabic'),
           ),
         ],

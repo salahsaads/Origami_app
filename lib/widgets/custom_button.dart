@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../Theme/colors.dart';
+import '../Theme/constant.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
         width: MediaQuery.sizeOf(context).width,
         height: 50.w,
         decoration: BoxDecoration(
-            color: primarycolor,
+            color: kPrimarycolor,
             borderRadius: BorderRadius.circular(
               10.r,
             )),
@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
               fontSize: 20.sp,
               fontFamily: 'NotoKufiArabic',
               fontWeight: FontWeight.bold,
-              color: secondarycolor),
+              color: kSecondarycolor),
         )),
       ),
     );

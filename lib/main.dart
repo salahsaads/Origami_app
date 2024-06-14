@@ -2,15 +2,16 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/services.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:origami/bussinus_logic/authentication.dart';
-import 'package:origami/screens/home_screen.dart';
+import 'package:origami/bussinus_logic/authentiacation/authentication.dart';
+import 'package:origami/screens/nav_bar.dart';
 
 import 'package:origami/screens/login_screen.dart';
 import 'package:origami/screens/register_screen.dart';
 import 'package:origami/screens/splah_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -18,8 +19,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  runApp(const Origami());
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
+    runApp(const Origami());
+  });
 }
 
 class Origami extends StatelessWidget {
@@ -27,10 +30,10 @@ class Origami extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
+    return const ScreenUtilInit(
       splitScreenMode: true,
       minTextAdapt: true,
-      designSize: const Size(360, 690),
+      designSize: Size(360, 690),
       child: CustomMaterialApp(),
     );
   }

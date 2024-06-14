@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:origami/Theme/colors.dart';
+import 'package:origami/Theme/constant.dart';
 import 'package:origami/screens/onboarding/intro_view.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -47,10 +47,10 @@ class OnBoardingView extends StatelessWidget {
               count: 2,
               textDirection: TextDirection.rtl,
               effect: ExpandingDotsEffect(
-                activeDotColor: primarycolor,
+                activeDotColor: kPrimarycolor,
                 dotHeight: 10.h,
                 dotWidth: 10.w,
-                dotColor: secondarycolor,
+                dotColor: kSecondarycolor,
               )),
         ),
       ],

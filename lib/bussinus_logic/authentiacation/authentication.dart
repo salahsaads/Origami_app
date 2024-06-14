@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:origami/screens/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../screens/home_screen.dart';
+import '../../screens/nav_bar.dart';
 
 CollectionReference users = FirebaseFirestore.instance.collection('users');
-check() {}
+
 // Method to log in
 Future<void> login({
   required TextEditingController phone,
@@ -34,11 +34,20 @@ Future<void> login({
       // Password is correct, set login status to true and navigate to home screen
       await setLoginStatus(true);
       print("Login successful!");
-      Navigator.push(
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('phoneNumber', phone.text);
+      print(prefs.getString('phoneNumber'));
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => const HomeScreen(),
+      //     ));
+      Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
             builder: (context) => const HomeScreen(),
-          ));
+          ),
+          (route) => false);
       // Navigate to home screen or any other authenticated screen
     } else {
       // Password is incorrect
@@ -75,25 +84,30 @@ register(
     'name': name.text.trim(),
     'phoneNumber': phone.text.trim(),
     'password': pass.text.trim(),
-    'point': 0
+    'points': 0
   });
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('phoneNumber', phone.text);
   setLoginStatus(true);
   Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (context) => HomeScreen(),
+        builder: (context) => const HomeScreen(),
       ),
       (route) => false);
 }
 
-logout({required BuildContext context}) {
+logout({required BuildContext context}) async {
   setLoginStatus(false);
-  Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LoginScreen(),
-      ),
-      (route) => false);
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs
+      .setString('phoneNumber', '')
+      .then((value) => Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LoginScreen(),
+          ),
+          (route) => false));
 }
 
 // Function to store login status locally

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:origami/widgets/custom_appbar.dart';
+import 'package:origami/widgets/custom_itrro_appbar.dart';
 
 import '../widgets/register_form.dart';
 
@@ -25,7 +25,7 @@ class RegisterBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const CustomAppbar(text: 'إنشاء حساب جديد'),
+          const CustomIntoAppbar(text: 'إنشاء حساب جديد'),
           SizedBox(
             height: 10.h,
           ),
@@ -33,7 +33,7 @@ class RegisterBody extends StatelessWidget {
             'assets/images/logo.png',
             width: 100.w,
           ),
-          RegisterForm()
+          const RegisterForm()
         ],
       ),
     );

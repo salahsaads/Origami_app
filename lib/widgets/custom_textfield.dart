@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../Theme/colors.dart';
+import '../Theme/constant.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -42,7 +42,7 @@ class CustomTextField extends StatelessWidget {
             }
           },
           controller: controller,
-          cursorColor: primarycolor,
+          cursorColor: kPrimarycolor,
           keyboardType: keyboardType,
           maxLength: maxLength,
           textDirection: TextDirection.rtl,
